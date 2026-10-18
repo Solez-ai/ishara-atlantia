@@ -1,0 +1,63 @@
+{
+  "protocol": "GroupKFold over 441 sessions (session-held-out)",
+  "accuracy": 1.0,
+  "macro_f1": 1.0,
+  "labels": [
+    "signerA_d1",
+    "signerA_d2",
+    "signerA_d3",
+    "signerB_d1",
+    "signerB_d2",
+    "signerB_d3"
+  ],
+  "confusion": [
+    [
+      441,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      441,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      441,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      441,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      441,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      441
+    ]
+  ]
+}

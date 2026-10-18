@@ -1,0 +1,7 @@
+{
+  "water":  {"en": "Water",  "bn": "পানি"},
+  "help":   {"en": "Help",   "bn": "সাহায্য"},
+  "thanks": {"en": "Thank you", "bn": "ধন্যবাদ"},
+  "doctor": {"en": "Doctor", "bn": "ডাক্তার"},
+  "food":   {"en": "Food",   "bn": "খাবার"}
+}

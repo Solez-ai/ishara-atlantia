@@ -1,0 +1,23 @@
+{
+  "hello": {"en": "Hello", "bn": "হ্যালো"},
+  "goodbye": {"en": "Goodbye", "bn": "বিদায়"},
+  "thankyou": {"en": "Thank you", "bn": "ধন্যবাদ"},
+  "sorry": {"en": "Sorry", "bn": "দুঃখিত"},
+  "yes": {"en": "Yes", "bn": "হ্যাঁ"},
+  "no": {"en": "No", "bn": "না"},
+  "please": {"en": "Please", "bn": "অনুগ্রহ করে"},
+  "help": {"en": "Help", "bn": "সাহায্য"},
+  "water": {"en": "Water", "bn": "পানি"},
+  "food": {"en": "Food", "bn": "খাবার"},
+  "name": {"en": "Name", "bn": "নাম"},
+  "doctor": {"en": "Doctor", "bn": "ডাক্তার"},
+  "hospital": {"en": "Hospital", "bn": "হাসপাতাল"},
+  "school": {"en": "School", "bn": "স্কুল"},
+  "home": {"en": "Home", "bn": "বাড়ি"},
+  "work": {"en": "Work", "bn": "কাজ"},
+  "family": {"en": "Family", "bn": "পরিবার"},
+  "friend": {"en": "Friend", "bn": "বন্ধু"},
+  "happy": {"en": "Happy", "bn": "খুশি"},
+  "tired": {"en": "Tired", "bn": "ক্লান্ত"},
+  "_other": {"en": "Other/Non-sign", "bn": "অন্যান্য/অ-চিহ্ন"}
+}

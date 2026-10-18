@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISHARA - Sign Language Recognition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px;
+        }
+        
+        .poster {
+            width: 1000px;
+            height: 1294px; /* 8.5x11 at 150 DPI */
+            background: white;
+            color: #333;
+            padding: 70px;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 45px;
+            padding-bottom: 30px;
+            border-bottom: 4px solid #2c3e50;
+        }
+        
+        .title {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+            color: #2c3e50;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: #555;
+            margin-bottom: 18px;
+        }
+        
+        .category {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #3498db;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 45px;
+        }
+        
+        .section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-title {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .section-content {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+        }
+        
+        .section-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .section-content li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .section-content li::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 10px;
+        }
+        
+        .section-content ol {
+            padding-left: 20px;
+        }
+        
+        .section-content ol li {
+            margin-bottom: 10px;
+            padding-left: 8px;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .metrics-section {
+            margin: 45px 0;
+            padding: 35px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .metrics-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .metric {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid #3498db;
+        }
+        
+        .metric-value {
+            font-size: 36px;
+            font-weight: 900;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .innovation-box {
+            background: #e8f4f8;
+            border: 3px solid #3498db;
+            padding: 30px;
+            margin: 35px 0;
+        }
+        
+        .innovation-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .innovation-content {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #444;
+        }
+        
+        .footer {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            padding-top: 35px;
+            border-top: 4px solid #2c3e50;
+        }
+        
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .footer-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="header">
+            <div class="title">ISHARA</div>
+            <div class="subtitle">On-Device Sign Language Recognition for Everyone</div>
+            <div class="category">Artificial Intelligence | Machine Learning | Computer Vision</div>
+        </div>
+        
+        <div class="main-grid">
+            <div class="section">
+                <div class="section-title">Problem Statement</div>
+                <div class="section-content">
+                    <p style="margin-bottom: 15px;"><strong>72 million Deaf and hard-of-hearing people worldwide</strong> lack accessible digital sign language tools.</p>
+                    <p style="margin-bottom: 15px;">Current solutions require expensive GPUs and cloud infrastructure, excluding developing nations.</p>
+                    <p style="font-weight: 700;">Bangladesh: 500,000+ Deaf individuals need accessible technology.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Proposed Solution</div>
+                <div class="section-content">
+                    <ul>
+                        <li>Lightweight models: 150 KB</li>
+                        <li>On-device inference: CPU-only</li>
+                        <li>Real-time: 20-30 FPS</li>
+                        <li>Multilingual: BdSL, ASL tested</li>
+                        <li>Privacy-first: No cloud required</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">How It Works</div>
+                <div class="section-content">
+                    <p style="margin-bottom: 12px; font-weight: 700;">4-Step Pipeline:</p>
+                    <ol>
+                        <li>Capture video frames at 30 FPS</li>
+                        <li>MediaPipe hand/pose detection</li>
+                        <li>Extract 144D feature vectors</li>
+                        <li>Lightweight ML classification</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Technology Stack</div>
+                <div class="section-content">
+                    <ul>
+                        <li>MediaPipe: Hand detection</li>
+                        <li>scikit-learn: Classification</li>
+                        <li>Python 3.10+</li>
+                        <li>OpenCV, NumPy</li>
+                        <li>Session-held-out validation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Expected Impact</div>
+                <div class="section-content">
+                    <ul>
+                        <li>Accessibility for 72M Deaf people</li>
+                        <li>Works offline globally</li>
+                        <li>Deployable on Raspberry Pi</li>
+                        <li>Privacy-respecting on-device</li>
+                        <li>Extensible to 300+ languages</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Future Development</div>
+                <div class="section-content">
+                    <ul>
+                        <li>Expand to 500+ signs</li>
+                        <li>Real-world signer data</li>
+                        <li>Mobile app deployment</li>
+                        <li>Platform integration</li>
+                        <li>Regional dialect support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="metrics-section full-width">
+            <div class="metrics-title">Results & Benchmarks</div>
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">92.7%</div>
+                    <div class="metric-label">Accuracy (BdSL)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">150 KB</div>
+                    <div class="metric-label">Model Size</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">&lt;1ms</div>
+                    <div class="metric-label">Inference Time</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">93.8%</div>
+                    <div class="metric-label">BdSLW60 (60 classes)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">87.3%</div>
+                    <div class="metric-label">WLASL (ASL subset)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">33x</div>
+                    <div class="metric-label">Smaller than SOTA</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="innovation-box full-width">
+            <div class="innovation-title">Key Innovation: Lightweight Feature Engineering Outperforms Deep Learning</div>
+            <div class="innovation-content">
+                ISHARA achieves 93.8% accuracy with 450 KB model while published CNN-LSTM achieves 94.2% with 15 MB model. Same performance, 33x smaller, deployable on any device including Raspberry Pi.
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-item">
+                <div class="footer-label">Participant Information</div>
+                <div class="footer-value">Samin Yeasar<br>Class 8<br>Birshreshtha Munshi Abdur Rouf Public College</div>
+            </div>
+            <div class="footer-item">
+                <div class="footer-label">Project Links</div>
+                <div class="footer-value">Web: ishara-atlantia.vercel.app<br>GitHub: github.com/Solez-ai/ishara-atlantia</div>
+            </div>
+            <div class="footer-item">
+                <div class="footer-label">Contact</div>
+                <div class="footer-value">Email: sheditzofficial918@gmail.com</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISHARA - Sign Language Recognition Poster</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .poster {
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 8.5 / 11;
+            background: white;
+            color: #333;
+            padding: 60px;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 25px;
+        }
+        
+        .title {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+            color: #2c3e50;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+            font-weight: 400;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+        
+        .section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .section-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .section-content li {
+            margin-bottom: 8px;
+            padding-left: 18px;
+            position: relative;
+        }
+        
+        .section-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .metric {
+            background: #f8f9fa;
+            padding: 18px;
+            border-radius: 4px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .innovation {
+            background: #f0f7ff;
+            border: 2px solid #3498db;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .innovation-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .innovation-content {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #444;
+        }
+        
+        .footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            padding-top: 25px;
+            border-top: 3px solid #2c3e50;
+            font-size: 12px;
+        }
+        
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-label {
+            color: #666;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-value {
+            font-weight: 600;
+            word-break: break-word;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .poster {
+                padding: 25px;
+            }
+            
+            .title {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            
+            .main {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="content">
+            <div class="header">
+                <div class="title">ISHARA</div>
+                <div class="subtitle">On-Device Sign Language Recognition for Everyone</div>
+                <div class="category-badge">AI/ML • Computer Vision</div>
+            </div>
+            
+            <div class="main">
+                <div class="section">
+                    <div class="section-title">The Problem</div>
+                    <div class="section-content">
+                        <p>72 million Deaf and hard-of-hearing people worldwide lack digital sign language tools. Current solutions require expensive GPUs and cloud infrastructure, excluding developing nations.</p>
+                        <p style="margin-top: 10px; font-weight: 600; color: #ffeb3b;">Bangladesh: 500,000+ Deaf individuals need accessible technology</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Our Solution</div>
+                    <div class="section-content">
+                        <ul>
+                            <li>Lightweight: 150 KB models</li>
+                            <li>On-Device: CPU-friendly, &lt;10ms</li>
+                            <li>Multilingual: BdSL, ASL, extensible</li>
+                            <li>Real-Time: 20-30 FPS live recognition</li>
+                            <li>Privacy: No cloud transmission</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">How It Works</div>
+                    <div class="section-content">
+                        <p><strong>4-Step Pipeline:</strong></p>
+                        <ol style="list-style: decimal; padding-left: 15px; margin-top: 8px;">
+                            <li>Capture video frames (30 FPS)</li>
+                            <li>Detect hand/pose landmarks (MediaPipe)</li>
+                            <li>Extract 144D feature vectors</li>
+                            <li>Classify with lightweight ML (&lt;1ms)</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Technology Stack</div>
+                    <div class="section-content">
+                        <ul>
+                            <li>MediaPipe (hand detection)</li>
+                            <li>scikit-learn (classification)</li>
+                            <li>Python 3.10+</li>
+                            <li>OpenCV, NumPy</li>
+                            <li>Session-held-out CV</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section full-width">
+                    <div class="section-title">Results & Benchmarks</div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">92.7%</div>
+                            <div class="metric-label">BdSL Accuracy</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">150 KB</div>
+                            <div class="metric-label">Model Size</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">&lt;1ms</div>
+                            <div class="metric-label">Inference Time</div>
+                        </div>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">93.8%</div>
+                            <div class="metric-label">BdSLW60 (60 classes)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">87.3%</div>
+                            <div class="metric-label">WLASL (ASL)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">33×</div>
+                            <div class="metric-label">Smaller vs SOTA</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section full-width">
+                    <div class="innovation">
+                        <div class="innovation-title"> Innovation: Lightweight Beats Deep Learning</div>
+                        <div class="innovation-content">
+                            Ishara achieves 93.8% accuracy with 450 KB model while published CNN-LSTM achieves 94.2% with 15 MB. Same performance, 33× smaller, works on any device—even Raspberry Pi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <div class="footer-item">
+                    <div class="footer-label">Participant</div>
+                    <div class="footer-value">Samin Yeasar, Class 8</div>
+                    <div class="footer-value">Birshreshtha Munshi Abdur Rouf Public College</div>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-label">Links</div>
+                    <div class="footer-value">🌐 ishara-atlantia.vercel.app</div>
+                    <div class="footer-value">📦 github.com/Solez-ai/ishara-atlantia</div>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-label">Contact</div>
+                    <div class="footer-value">📧 sheditzofficial918@gmail.com</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
