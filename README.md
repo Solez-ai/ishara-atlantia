@@ -1,55 +1,47 @@
 # ISHARA: On-Device Sign Language Recognition
 
-> Breaking the communication barrier with lightweight, CPU-friendly AI for Deaf communities worldwide.
+Breaking the communication barrier with lightweight, CPU-friendly AI for Deaf communities worldwide.
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)](https://scikit-learn.org/)
-[![MediaPipe](https://img.shields.io/badge/MediaPipe-1.1+-green.svg)](https://mediapipe.dev/)
+**Competition Category**: Artificial Intelligence & Machine Learning | Computer Vision
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 
 **ISHARA** is an AI/ML system that recognizes sign language in real-time on standard hardware without requiring GPUs or cloud infrastructure. Designed specifically for accessibility, ISHARA enables Deaf individuals and communities to interact with digital systems using their natural language—sign language.
 
 ### Key Innovation
-Traditional deep learning models require 15+ MB and expensive hardware. ISHARA achieves **competitive accuracy (93.8%) with only 450 KB models** that run on Raspberry Pi, old phones, and laptops—democratizing sign language technology globally.
 
-### Competition Category
-**Artificial Intelligence & Machine Learning**
-- Computer Vision: Hand landmark detection
-- Machine Learning: Lightweight classification
-- Data Science: Cross-validation and benchmarking
+Traditional deep learning models require 15+ MB and expensive hardware. ISHARA achieves **competitive accuracy (93.8%) with only 450 KB models** that run on Raspberry Pi, old phones, and laptops—democratizing sign language technology globally.
 
 ---
 
-## 🌟 Features
+## Features
 
-✅ **Lightweight Models**
+**Lightweight Models**
 - Logistic Regression: 92.7% accuracy, 150 KB, <1ms inference
 - MLP Classifier: 100% accuracy, 200 KB, 5ms inference
-- 33× smaller than published SOTA deep learning methods
+- 33x smaller than published SOTA deep learning methods
 
-✅ **On-Device Deployment**
+**On-Device Deployment**
 - CPU-only (no GPU required)
 - 20-30 FPS real-time recognition
 - Works on Raspberry Pi 4+, Android, laptops
 - Complete privacy (no cloud transmission)
 
-✅ **Multilingual Framework**
+**Multilingual Framework**
 - Trained on Bengali Sign Language (BdSL)
 - Validated on American Sign Language (ASL)
 - Language-agnostic architecture—swap data, retrain same code
 - Extensible to 300+ sign languages globally
 
-✅ **Rigorous Evaluation**
+**Rigorous Evaluation**
 - Session-held-out cross-validation (prevents temporal leakage)
 - Cross-signer generalization testing (87.5% new user accuracy)
 - Confusion matrix analysis
 - Published benchmarks on international datasets
 
-✅ **Production-Ready**
+**Production-Ready**
 - 100% test coverage (8/8 tests pass)
 - Full documentation
 - Open-source codebase
@@ -57,7 +49,7 @@ Traditional deep learning models require 15+ MB and expensive hardware. ISHARA a
 
 ---
 
-## 📊 Results & Benchmarks
+## Results & Benchmarks
 
 ### Performance Metrics
 
@@ -71,35 +63,35 @@ Traditional deep learning models require 15+ MB and expensive hardware. ISHARA a
 | Published ViT | Multiple | 200+ | 96.1% | 0.961 | 40ms | 50+ MB |
 
 ### Key Finding
-**Ishara achieves competitive accuracy (within 2-3% of SOTA) while being 33× smaller and 33× faster**, enabling deployment in resource-constrained settings.
+
+**Ishara achieves competitive accuracy (within 2-3% of SOTA) while being 33x smaller and 33x faster**, enabling deployment in resource-constrained settings.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 Video Input (30 FPS)
     ↓
 ┌─────────────────────────────┐
 │   MediaPipe Landmark        │
-│   - Hand detection (2 hands) │
-│   - Pose detection (11 pts)  │
-│   - Face detection (opt)     │
+│   - Hand detection (2 hands)│
+│   - Pose detection (11 pts) │
 └─────────────────────────────┘
     ↓
 ┌─────────────────────────────┐
-│   Feature Engineering        │
-│   - Normalize (wrist origin) │
-│   - Resample (30 frames)     │
-│   - Augment (rotation, scale)│
-│   - Vectorize (144D per frame)
+│   Feature Engineering       │
+│   - Normalize (wrist origin)│
+│   - Resample (30 frames)    │
+│   - Augment (rotation,scale)│
+│   - Vectorize (144D/frame)  │
 └─────────────────────────────┘
     ↓
 ┌─────────────────────────────┐
-│   Lightweight Classifier     │
-│   - Logistic Regression      │
-│   - OR MLP (2-layer)         │
-│   - <1ms inference           │
+│   Lightweight Classifier    │
+│   - Logistic Regression     │
+│   - OR MLP (2-layer)        │
+│   - <1ms inference          │
 └─────────────────────────────┘
     ↓
 Text Output + Confidence Score
@@ -118,7 +110,7 @@ Sequence: 30 frames × 144D = 4,320D input to classifier
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -140,7 +132,7 @@ pip install -r requirements.txt
 # Run test suite (should pass all 8 tests)
 python -m pytest tests/test_pipeline.py -v
 
-# Expected output: 8 passed in ~12s ✓
+# Expected output: 8 passed in ~12s
 ```
 
 ### Quick Demo (No Webcam Needed)
@@ -168,7 +160,7 @@ python demo.py --model models/ishara_mlp.joblib --source input_video.mp4
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 - **[README.md](ishara/README.md)**: Complete user guide with all commands
 - **[DATA.md](ishara/DATA.md)**: Data collection protocol & ethics
@@ -180,14 +172,12 @@ python demo.py --model models/ishara_mlp.joblib --source input_video.mp4
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ishara-atlantia/
 ├── README.md                          # This file
 ├── .gitignore                         # Git ignore patterns
-├── requirements.txt                   # Python dependencies
-│
 ├── ishara/                            # Main package
 │   ├── __init__.py
 │   ├── features.py                    # Feature engineering (144D vectors)
@@ -205,49 +195,18 @@ ishara-atlantia/
 │   ├── import_dataset.py              # Convert BdSLW60/WLASL datasets
 │   │
 │   ├── glossary.json                  # 21 signs (20 + _other) with Bengali labels
-│   ├── glossary.example.json          # Template
-│   │
 │   ├── data/                          # Training data directory
-│   │   ├── signerA_d1/               # Session: Signer A, Day 1
-│   │   │   ├── hello_001.npy         # (30 frames, 144 dims each)
-│   │   │   └── ...
-│   │   ├── signerA_d2/
-│   │   ├── signerA_d3/
-│   │   ├── signerB_d1/
-│   │   ├── signerB_d2/
-│   │   └── signerB_d3/
-│   │
 │   ├── models/                        # Trained models
-│   │   ├── ishara_lr.joblib          # Logistic Regression (92.7%)
-│   │   ├── ishara_mlp.joblib         # MLP (100%)
-│   │   └── ...
-│   │
 │   ├── reports/                       # Evaluation reports
-│   │   ├── lr/
-│   │   │   ├── cv.json               # Cross-validation results
-│   │   │   └── confusion.png         # Confusion matrix
-│   │   └── mlp/
-│   │       ├── cv.json
-│   │       └── confusion.png
-│   │
 │   ├── tests/                         # Test suite
-│   │   ├── __init__.py
-│   │   └── test_pipeline.py          # 8 comprehensive tests
-│   │
-│   ├── README.md                      # Detailed guide
-│   ├── DATA.md                        # Data documentation
-│   ├── DEMO_NOTES.md                  # Demo interface docs
-│   ├── BENCHMARKS.md                  # International benchmarks
-│   ├── MODEL_CARD.md                  # Model specifications
-│   ├── TESTING_GUIDE.md               # Testing procedures
-│   └── results.md                     # Detailed results
+│   └── [documentation files]
 │
-└── ishara_poster.html                 # One-page poster (printable)
+└── ishara_poster_professional.html    # Competition poster
 ```
 
 ---
 
-## 🎓 Technologies & Methods
+## Technologies & Methods
 
 ### Machine Learning
 - **Feature Engineering**: Hand pose + temporal resampling
@@ -267,38 +226,9 @@ ishara-atlantia/
 - **Class Balance**: Perfect 1:1 ratio across 21 classes
 - **Reproducibility**: Fixed random seeds, committed artifacts
 
-### Software Engineering
-- **Modularity**: Separable data collection, training, evaluation
-- **Testing**: 8 unit tests covering entire pipeline
-- **Documentation**: 8 comprehensive guides
-- **Open-Source**: MIT license, community-friendly
-
 ---
 
-## 📊 Evaluation Protocol
-
-### Session-Held-Out Cross-Validation
-
-Standard cross-validation risks data leakage in time-series (video frames from same sign bleed into test set). ISHARA uses **session-held-out CV**:
-
-1. **Training**: Use 5 sessions
-2. **Test**: Hold out 1 entire session
-3. **Repeat**: 6 folds (one per session)
-4. **Result**: Realistic cross-session generalization estimate
-
-This prevents frames from the same sign episode from appearing in both train and test.
-
-### Cross-Signer Evaluation
-
-1. Train on all sessions from Signer A
-2. Test on all sessions from Signer B
-3. Result: 87.5% accuracy (5% drop expected for new signers)
-
-This validates the model learns sign semantics, not just individual signer patterns.
-
----
-
-## 🌍 International Value
+## International Value
 
 ### Multilingual Framework
 
@@ -327,37 +257,37 @@ python train.py --data data_lsf --out models/ishara_lsf.joblib
 
 ---
 
-## 💡 Innovation Highlights
+## Innovation Highlights
 
 ### 1. Lightweight Over Deep Learning
-- ✅ 150 KB vs 15 MB (33× smaller)
-- ✅ <1ms vs 25ms inference (25× faster)
-- ✅ Same accuracy (93.8% vs 94.2%)
-- ✅ **First lightweight method competitive with SOTA**
+- 150 KB vs 15 MB (33x smaller)
+- <1ms vs 25ms inference (25x faster)
+- Same accuracy (93.8% vs 94.2%)
+- **First lightweight method competitive with SOTA**
 
 ### 2. Multilingual Design
-- ✅ Tested on Bengali and American sign languages
-- ✅ Same code for all languages (one-line data path change)
-- ✅ Proof of generalization across 300+ sign languages
-- ✅ **First truly multilingual sign language system**
+- Tested on Bengali and American sign languages
+- Same code for all languages (one-line data path change)
+- Proof of generalization across 300+ sign languages
+- **First truly multilingual sign language system**
 
 ### 3. Rigorous Evaluation
-- ✅ Session-held-out CV (prevents temporal leakage)
-- ✅ Cross-signer testing (new user generalization)
-- ✅ False positive rate monitoring
-- ✅ Published benchmarks on international datasets
-- ✅ **Academic rigor with open reproducibility**
+- Session-held-out CV (prevents temporal leakage)
+- Cross-signer testing (new user generalization)
+- False positive rate monitoring
+- Published benchmarks on international datasets
+- **Academic rigor with open reproducibility**
 
 ### 4. Ethical Accessibility Focus
-- ✅ Targets underserved Deaf communities (South Asia, Africa)
-- ✅ Privacy-first (on-device, no cloud)
-- ✅ Transparent limitations and fairness analysis
-- ✅ Consent-based training data
-- ✅ **Tech for accessibility, not surveillance**
+- Targets underserved Deaf communities (South Asia, Africa)
+- Privacy-first (on-device, no cloud)
+- Transparent limitations and fairness analysis
+- Consent-based training data
+- **Tech for accessibility, not surveillance**
 
 ---
 
-## 🔬 How to Use
+## How to Use
 
 ### Collect Your Own Data
 
@@ -411,44 +341,7 @@ print(f"Predicted: {prediction.label} (confidence: {prediction.conf:.3f})")
 
 ---
 
-## 📈 Future Development
-
-### Roadmap
-
-1. **Vocabulary Expansion** (500+ signs)
-   - Add more signs based on real-world usage
-   - Create multilingual vocabulary (English + Bengali + ASL)
-
-2. **Real-World Data Collection**
-   - Partner with schools for blind to collect diverse signers
-   - Handle age, gender, regional dialect variations
-   - Outdoor environments and variable lighting
-
-3. **Deployment & Integration**
-   - Mobile app (Android/iOS)
-   - Web interface
-   - Integration with messaging apps (WhatsApp, Messenger)
-   - Video conferencing plugin (Zoom, Google Meet)
-
-4. **Advanced Features**
-   - Sentence-level understanding (context-aware)
-   - Sign-to-text with grammar correction
-   - Real-time captioning for events
-   - Educational feedback for learners
-
-5. **Fairness & Inclusion**
-   - Evaluate across diverse populations (age, gender, regional variants)
-   - Address bias in detection systems
-   - Build for accessibility (blind users, low-light conditions)
-
-6. **Open-Source Community**
-   - Release pre-trained models for all major sign languages
-   - Build API for easy integration
-   - Create documentation for contributing new languages
-
----
-
-## ✅ Testing
+## Testing
 
 ### Run Full Test Suite
 
@@ -474,7 +367,7 @@ bash quicktest.sh
 
 ---
 
-## 📄 Citation
+## Citation
 
 If you use ISHARA in research or projects, please cite:
 
@@ -489,30 +382,29 @@ If you use ISHARA in research or projects, please cite:
 
 ---
 
-## 👤 Author
+## Author
 
 **Samin Yeasar**
 - Class 8, Birshreshtha Munshi Abdur Rouf Public College
 - Email: sheditzofficial918@gmail.com
-- GitHub: [@Solez-ai](https://github.com/Solez-ai)
+- GitHub: @Solez-ai
 
 ---
 
-## 🌐 Links
+## Links
 
-- **Website**: https://ishara-atlantia.vercel.app
 - **GitHub**: https://github.com/Solez-ai/ishara-atlantia
 - **Demo**: Run `python interactive_demo.py` for text-based demo
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License—see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **MediaPipe** by Google for landmark detection
 - **scikit-learn** for machine learning algorithms
@@ -522,18 +414,14 @@ This project is licensed under the MIT License—see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support
+## Support
 
-- 📧 Email: sheditzofficial918@gmail.com
-- 🐛 Issues: [GitHub Issues](https://github.com/Solez-ai/ishara-atlantia/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/Solez-ai/ishara-atlantia/discussions)
+- Email: sheditzofficial918@gmail.com
+- Issues: [GitHub Issues](https://github.com/Solez-ai/ishara-atlantia/issues)
+- Discussions: [GitHub Discussions](https://github.com/Solez-ai/ishara-atlantia/discussions)
 
 ---
 
-<div align="center">
-
-**Made with ❤️ for Deaf communities worldwide**
+**Made with dedication for Deaf communities worldwide**
 
 Breaking the communication barrier with AI that's accessible, ethical, and locally deployable.
-
-</div>
